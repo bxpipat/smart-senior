@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>อบรมผู้สูงวัย รู้ทัน AI ปลอดภัยจากมิจฉาชีพ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&family=Bai+Jamjuree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1d2b3a;
+    --warm:#fff8ec;
+    --gold:#e8a33d;
+    --gold-deep:#c97b1e;
+    --teal:#2f7d72;
+    --teal-deep:#1f5a52;
+    --coral:#e1604b;
+    --paper:#fffdf8;
+    --shadow:rgba(40,30,10,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Mitr',sans-serif;
+    color:var(--ink);
+    background:var(--warm);
+    font-size:19px;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-weight:600;line-height:1.25}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(232,163,61,.25), transparent 45%),
+      radial-gradient(circle at 10% 80%, rgba(47,125,114,.22), transparent 45%),
+      linear-gradient(160deg,#fffaf0 0%,#ffeccd 100%);
+    padding:70px 0 90px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(201,123,30,.10) 1.4px, transparent 1.4px);
+    background-size:26px 26px;
+    pointer-events:none;
+  }
+  .badge{
+    display:inline-block;background:var(--teal);color:#fff;
+    padding:7px 20px;border-radius:40px;font-size:16px;
+    letter-spacing:.5px;margin-bottom:22px;
+    box-shadow:0 6px 16px rgba(31,90,82,.3);
+  }
+  .hero h1{
+    font-size:clamp(34px,6vw,62px);
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  .hero h1 .hl{color:var(--gold-deep)}
+  .hero p.lead{
+    font-size:clamp(19px,2.4vw,24px);
+    font-weight:300;max-width:640px;margin-bottom:34px;color:#42505e;
+  }
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:600;font-size:19px;
+    padding:16px 32px;border-radius:14px;transition:.22s;
+    box-shadow:0 8px 22px var(--shadow);
+  }
+  .btn-call{background:var(--coral);color:#fff}
+  .btn-call:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(225,96,75,.4)}
+  .btn-line{background:#06c755;color:#fff}
+  .btn-line:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(6,199,85,.4)}
+
+  /* float shapes */
+  .shape{position:absolute;border-radius:50%;opacity:.5;z-index:0}
+  .s1{width:120px;height:120px;background:var(--gold);top:60px;right:8%;animation:bob 6s ease-in-out infinite}
+  .s2{width:70px;height:70px;background:var(--teal);bottom:50px;right:24%;animation:bob 5s ease-in-out infinite .8s}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+  /* ---------- PRICE STRIP ---------- */
+  .price-strip{
+    background:var(--ink);color:#fff;padding:30px 0;
+  }
+  .price-strip .wrap{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;text-align:center}
+  .price-strip .it .big{font-size:34px;font-weight:700;color:var(--gold);font-family:'Bai Jamjuree'}
+  .price-strip .it .lbl{font-size:16px;font-weight:300;opacity:.85}
+
+  /* ---------- SECTION ---------- */
+  section.block{padding:75px 0}
+  .sec-title{text-align:center;margin-bottom:14px}
+  .sec-title h2{font-size:clamp(28px,4vw,40px);color:var(--ink)}
+  .sec-title .sub{text-align:center;color:#6a7682;font-weight:300;margin-bottom:48px;font-size:19px}
+  .sec-title h2 .u{position:relative}
+  .sec-title h2 .u::after{content:"";position:absolute;left:0;bottom:2px;width:100%;height:11px;background:rgba(232,163,61,.4);z-index:-1;border-radius:4px}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+  .card{
+    background:var(--paper);border-radius:20px;padding:32px 28px;
+    box-shadow:0 10px 30px rgba(60,45,15,.08);
+    border:1px solid rgba(201,123,30,.12);
+    transition:.25s;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(60,45,15,.16)}
+  .card .ic{font-size:42px;margin-bottom:14px;display:block}
+  .card h3{font-size:22px;margin-bottom:10px;color:var(--gold-deep)}
+  .card p{font-size:17px;font-weight:300;color:#4d5965}
+
+  /* ---------- COURSE ---------- */
+  .course{background:linear-gradient(180deg,#fff8ec,#ffeed2)}
+  .modules{display:flex;flex-direction:column;gap:18px;max-width:780px;margin:0 auto}
+  .mod{
+    display:flex;gap:22px;align-items:flex-start;
+    background:var(--paper);border-radius:16px;padding:24px 26px;
+    box-shadow:0 8px 22px rgba(60,45,15,.08);
+    border-left:6px solid var(--teal);
+  }
+  .mod .num{
+    flex:0 0 52px;height:52px;background:var(--teal);color:#fff;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:24px;font-weight:700;font-family:'Bai Jamjuree';
+  }
+  .mod h3{font-size:21px;margin-bottom:5px}
+  .mod p{font-size:17px;font-weight:300;color:#4d5965}
+
+  /* ---------- DETAIL BOX ---------- */
+  .detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;max-width:860px;margin:0 auto}
+  .dbox{
+    text-align:center;background:var(--paper);border-radius:18px;padding:30px 22px;
+    box-shadow:0 8px 22px rgba(60,45,15,.08);
+  }
+  .dbox .ic{font-size:38px;display:block;margin-bottom:10px}
+  .dbox .t{font-size:16px;color:#6a7682;font-weight:300}
+  .dbox .v{font-size:24px;font-weight:600;color:var(--gold-deep);font-family:'Bai Jamjuree'}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink);color:#fff;padding:80px 0}
+  .contact .sec-title h2{color:#fff}
+  .contact .sub{color:#b9c4cd}
+  .contact-flex{display:flex;gap:50px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .qr-card{
+    background:#fff;padding:22px;border-radius:22px;text-align:center;
+    box-shadow:0 16px 40px rgba(0,0,0,.4);
+  }
+  .qr-card img{width:230px;height:230px;display:block;border-radius:10px}
+  .qr-card .cap{color:#06c755;font-weight:600;margin-top:14px;font-size:19px}
+  .contact-info{max-width:360px}
+  .contact-info .line-item{
+    display:flex;align-items:center;gap:16px;margin-bottom:22px;font-size:21px;
+  }
+  .contact-info .ci-ic{
+    flex:0 0 54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;
+  }
+  .ci-phone{background:var(--coral)}
+  .ci-line{background:#06c755}
+  .contact-info a{color:#fff;text-decoration:none;font-weight:600}
+  .contact-info .note{font-size:16px;font-weight:300;color:#9aa6b0;line-height:1.6}
+  .big-call{
+    display:block;text-align:center;background:var(--gold);color:var(--ink);
+    font-size:30px;font-weight:700;font-family:'Bai Jamjuree';
+    padding:18px;border-radius:16px;text-decoration:none;margin-top:10px;
+    letter-spacing:1px;transition:.2s;
+  }
+  .big-call:hover{background:var(--gold-deep);color:#fff}
+
+  footer{background:#13202c;color:#7d8a95;text-align:center;padding:28px;font-size:15px;font-weight:300}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="shape s1"></span><span class="shape s2"></span>
+  <div class="wrap" style="position:relative;z-index:2">
+    <span class="badge">🎓 หลักสูตรพิเศษสำหรับผู้สูงวัย</span>
+    <h1>รู้ทัน <span class="hl">AI</span><br>ใช้มือถือ <span class="hl">ปลอดภัย</span><br>ไม่ตกเป็นเหยื่อมิจฉาชีพ</h1>
+    <p class="lead">อบรมง่าย ๆ เข้าใจไว สอนแบบใจเย็น เป็นกันเอง ให้คุณพ่อคุณแม่และผู้สูงอายุใช้เทคโนโลยีได้อย่างมั่นใจ และรู้เท่าทันกลโกงของแก๊งคอลเซ็นเตอร์</p>
+    <div class="hero-cta">
+      <a href="tel:0891108316" class="btn btn-call">📞 โทร 089-110-8316</a>
+      <a href="https://line.me/R/ti/p/" class="btn btn-line">💬 แอดไลน์สอบถาม</a>
+    </div>
+  </div>
+</header>
+
+<!-- PRICE STRIP -->
+<div class="price-strip">
+  <div class="wrap">
+    <div class="it"><div class="big">2,500 บาท</div><div class="lbl">ค่าอบรมตลอดหลักสูตร</div></div>
+    <div class="it"><div class="big">3 ชั่วโมง</div><div class="lbl">เรียนจบในวันเดียว</div></div>
+    <div class="it"><div class="big">วัย 60+</div><div class="lbl">ไม่ต้องมีพื้นฐาน</div></div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <h2>ทำไมต้อง<span class="u">เรียนคอร์สนี้</span></h2>
+    </div>
+    <p class="sub reveal">โลกออนไลน์เปลี่ยนเร็ว มิจฉาชีพก็เก่งขึ้นทุกวัน เราช่วยให้ผู้สูงวัยตามทัน</p>
+    <div class="cards">
+      <div class="card reveal"><span class="ic">🛡️</span><h3>กันโดนหลอก</h3><p>รู้จักรูปแบบกลโกงยอดฮิต SMS ปลอม ลิงก์ดูดเงิน สายปลอมจากธนาคารและตำรวจ</p></div>
+      <div class="card reveal"><span class="ic">🤖</span><h3>ใช้ AI เป็น</h3><p>เริ่มต้นใช้ AI ช่วยตอบคำถาม แปลภาษา ค้นข้อมูล และผู้ช่วยในชีวิตประจำวันอย่างง่าย ๆ</p></div>
+      <div class="card reveal"><span class="ic">📱</span><h3>มือถือปลอดภัย</h3><p>ตั้งค่าความปลอดภัย รหัสผ่าน การยืนยันตัวตน และวิธีเช็กก่อนกดทุกครั้ง</p></div>
+      <div class="card reveal"><span class="ic">❤️</span><h3>สอนใจเย็น</h3><p>วิทยากรใจดี สอนช้า ถามได้ไม่อาย เรียนสนุก พร้อมเอกสารประกอบให้กลับไปทบทวน</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE -->
+<section class="block course">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <h2>เนื้อหา<span class="u">หลักสูตร</span></h2>
+    </div>
+    <p class="sub reveal">3 ชั่วโมง แบ่งเป็น 4 ช่วงเรียน เข้มข้นแต่เข้าใจง่าย</p>
+    <div class="modules">
+      <div class="mod reveal"><div class="num">1</div><div><h3>รู้จักกลโกงมิจฉาชีพยุคใหม่</h3><p>แก๊งคอลเซ็นเตอร์ พัสดุปลอม ลิงก์ดูดเง��น เพจปลอม พร้อมตัวอย่างจริงที่ต้องระวัง</p></div></div>
+      <div class="mod reveal"><div class="num">2</div><div><h3>ตั้งค่ามือถือให้ปลอดภัย</h3><p>รหัสผ่านที่ดี การยืนยัน 2 ขั้นตอน ระวังแอปอันตราย และวิธีตรวจสอบก่อนโอนเงิน</p></div></div>
+      <div class="mod reveal"><div class="num">3</div><div><h3>เริ่มต้นใช้งาน AI</h3><p>ทดลองใช้ AI ช่วยค้นข้อมูล ตอบคำถาม แปลภาษา และเป็นผู้ช่วยในชีวิตประจำวัน</p></div></div>
+      <div class="mod reveal"><div class="num">4</div><div><h3>ฝึกปฏิบัติจริง + ถาม-ตอบ</h3><p>ลงมือทำจริงกับเครื่องของตัวเอง ซักถามปัญหาที่เจอบ่อย พร้อมเคล็ดลับใช้งานปลอดภัย</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-title reveal"><h2>รายละเอียด<span class="u">การอบรม</span></h2></div>
+    <div class="detail-grid">
+      <div class="dbox reveal"><span class="ic">💰</span><div class="t">ค่าอบรม</div><div class="v">2,500 บาท</div></div>
+      <div class="dbox reveal"><span class="ic">⏰</span><div class="t">ระยะเวลา</div><div class="v">3 ชั่วโมง</div></div>
+      <div class="dbox reveal"><span class="ic">📍</span><div class="t">สถานที่</div><div class="v" style="font-size:18px;line-height:1.4">แจ้งภายหลัง</div></div>
+      <div class="dbox reveal"><span class="ic">👥</span><div class="t">เหมาะกับ</div><div class="v" style="font-size:18px">ผู้สูงวัยทุกท่าน</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-title reveal"><h2>สมัคร / สอบถาม</h2></div>
+    <p class="sub reveal">รับจำนวนจำกัด จองที่นั่งได้แล้ววันนี้</p>
+    <div class="contact-flex">
+      <div class="qr-card reveal">
+        <img src="assets/line-qr.jpg" alt="LINE QR Code">
+        <div class="cap">สแกนเพื่อแอดไลน์</div>
+      </div>
+      <div class="contact-info reveal">
+        <div class="line-item">
+          <div class="ci-ic ci-phone">📞</div>
+          <div><div style="font-size:15px;color:#9aa6b0;font-weight:300">โทรสอบถาม</div><a href="tel:0891108316">089-110-8316</a></div>
+        </div>
+        <div class="line-item">
+          <div class="ci-ic ci-line">💬</div>
+          <div><div style="font-size:15px;color:#9aa6b0;font-weight:300">เพิ่มเพื่อนทาง LINE</div><a href="https://line.me/R/ti/p/">สแกน QR หรือกดเพิ่มเพื่อน</a></div>
+        </div>
+        <p class="note">📍 สถานที่อบรมจะแจ้งให้ทราบภายหลังการลงทะเบียน สามารถสอบถามรายละเอียดเพิ่มเติมและรอบอบรมได้ทุกช่องทาง</p>
+        <a href="tel:0891108316" class="big-call">โทรเลย 089-110-8316</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 อบรมผู้สูงวัย รู้ทัน AI ใช้มือถือปลอดภัย · ติดต่อ 089-110-8316</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
